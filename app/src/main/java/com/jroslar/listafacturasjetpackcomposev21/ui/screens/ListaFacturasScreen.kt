@@ -13,6 +13,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +49,9 @@ private fun Toolbar() {
 //@Preview
 @Composable
 private fun Content(navController: NavController) {
+    val openDialog = remember { mutableStateOf(false) }
+    DetailFacturasScreen(openDialog)
+
     val listaPracticas = listOf(
         FacturaModel("Pendiente de pago", 32F, "05/07/2020"),
         FacturaModel("Anulada", 32F, "05/07/2020")
@@ -65,17 +71,24 @@ private fun Content(navController: NavController) {
             )
         }
         items(listaPracticas.size) { position ->
-            ItemFacturas(factura = listaPracticas[position], navController)
+            ItemFacturas(factura = listaPracticas[position], navController, openDialog)
         }
     }
 }
 
 @Composable
-private fun ItemFacturas(factura: FacturaModel, navController: NavController) {
+private fun ItemFacturas(
+    factura: FacturaModel,
+    navController: NavController,
+    openDialog: MutableState<Boolean>
+) {
     ConstraintLayout(
         Modifier
             .fillMaxWidth()
             .height(70.dp)
+            .clickable {
+                openDialog.value = true
+            }
     ) {
         val (fechaFactura, descEstadoFactura, importeFactura, arrowFactura, dividerFactura) = createRefs()
         val guideStart = createGuidelineFromStart(20.dp)
@@ -108,9 +121,10 @@ private fun ItemFacturas(factura: FacturaModel, navController: NavController) {
             text = factura.importeOrdenacion.toString().plus(
                 R.string.monedaValue.getResourceStringAndroid(
                     LocalContext.current)),
+            style = subTitleItem,
             modifier = Modifier
                 .constrainAs(importeFactura) {
-                    end.linkTo(arrowFactura.start, margin = 5.dp)
+                    end.linkTo(arrowFactura.start, margin = 10.dp)
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                 }
@@ -123,9 +137,6 @@ private fun ItemFacturas(factura: FacturaModel, navController: NavController) {
                     end.linkTo(parent.end, margin = 10.dp)
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
-                }
-                .clickable {
-                    navController.navigate(Constantes.DETAIL_FACTURAS)
                 }
         )
         Divider(

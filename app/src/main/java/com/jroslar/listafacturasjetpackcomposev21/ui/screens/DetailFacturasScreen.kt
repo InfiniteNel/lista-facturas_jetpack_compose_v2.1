@@ -8,8 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,8 +24,7 @@ import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextDialogFragm
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleFragment
 
 @Composable
-fun DetailFacturasScreen() {
-    val openDialog = remember { mutableStateOf(true) }
+fun DetailFacturasScreen(openDialog: MutableState<Boolean>) {
     val context = LocalContext.current
     if (openDialog.value) {
         Dialog(onDismissRequest =
@@ -43,7 +41,7 @@ fun DetailFacturasScreen() {
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .padding(15.dp)
+                            .padding(top = 20.dp, bottom = 10.dp)
                     )
                     Text(
                         text = R.string.tvNoFuncionalDetallesFacturasText.getResourceStringAndroid(context),
@@ -72,10 +70,4 @@ fun DetailFacturasScreen() {
             }
         }
     }
-}
-
-@Preview(widthDp = 200, heightDp = 200, showBackground = true)
-@Composable
-fun MyViewPreview() {
-    DetailFacturasScreen()
 }
