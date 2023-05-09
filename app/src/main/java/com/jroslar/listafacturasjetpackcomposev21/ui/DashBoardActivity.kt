@@ -48,7 +48,7 @@ private fun ViewContainer() {
 //@Preview
 @Composable
 private fun Toolbar() {
-    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White)
+    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White, elevation = 0.dp)
 }
 
 

@@ -43,7 +43,7 @@ fun ListaFacturasScreen(navController: NavController) {
 //@Preview
 @Composable
 private fun Toolbar() {
-    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White)
+    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White, elevation = 0.dp)
 }
 
 //@Preview
@@ -53,8 +53,8 @@ private fun Content(navController: NavController) {
     DetailFacturasScreen(openDialog)
 
     val listaPracticas = listOf(
-        FacturaModel("Pendiente de pago", 32F, "05/07/2020"),
-        FacturaModel("Anulada", 32F, "05/07/2020")
+        FacturaModel("Pendiente de pago", 32F, "31 Ago 2020"),
+        FacturaModel("Anulada", 32F, "31 Jul 2020")
     )
 
     LazyColumn(
@@ -67,7 +67,7 @@ private fun Content(navController: NavController) {
                 text = R.string.tvTitleFacturaListaFacturasText.getResourceStringAndroid(
                     LocalContext.current),
                 style = titleFragment,
-                modifier = Modifier.padding(20.dp)
+                modifier = Modifier.padding(bottom = 20.dp, start = 20.dp)
             )
         }
         items(listaPracticas.size) { position ->
