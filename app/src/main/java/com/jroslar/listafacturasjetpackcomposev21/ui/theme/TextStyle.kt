@@ -16,3 +16,15 @@ val subTitleItem = TextStyle(
     fontSize = 20.sp,
     fontWeight = FontWeight.Normal,
 )
+
+val subTitleFragment = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.Bold,
+)
+
+val normalTextDialogFragment = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Normal,
+)

@@ -2,7 +2,7 @@ package com.jroslar.listafacturasjetpackcomposev21.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val Green200 = Color(0xFF8DE490)
+val Green500 = Color(0xFF52AE55)
+val Green700 = Color(0xFF346336)
+val White200 = Color(0xFFFFFFFF)
