@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Lista Facturas Jetpack Compose V 2.1</string>
     <string name="tvTitlePracticasAndroidText">Prácticas Android</string>
+    <string name="monedaValue">€</string>
+
+    <!-- Fragment Lista Facturas -->
+    <string name="toolbarDetalleBackTextListaFacturas">Consumo</string>
+    <string name="tvInformacionDetallesFacturasText">Información</string>
+    <string name="tvNoFuncionalDetallesFacturasText">Esta funcionalidad aún no está disponible</string>
+    <string name="btCerrarPopUpDetallesFacturasText">Cerrar</string>
+    <string name="tvTitleFacturaListaFacturasText">Facturas</string>
+    <string name="tvTitleNoDataListaFacturasText">No se encontraron facturas</string>
 </resources>
