@@ -1,5 +1,6 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticaModel
@@ -84,6 +86,7 @@ fun ItemPractica(practica: PracticaModel) {
             .height(70.dp)
     ) {
         val (titlePractica, arrowPractica, dividerPractica) = createRefs()
+        val context = LocalContext.current
 
         Text(
             text = practica.name,
@@ -106,7 +109,11 @@ fun ItemPractica(practica: PracticaModel) {
                     bottom.linkTo(parent.bottom)
                 }
                 .clickable {
-
+                    ContextCompat.startActivity(
+                        context,
+                        Intent(context, ListaFacturasActivity::class.java),
+                        null
+                    )
                 }
         )
         Divider(
