@@ -12,16 +12,18 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.jroslar.listafacturasjetpackcomposev21.R
+import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticaModel
 import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticasName
+import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleItem
+import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,9 +65,8 @@ fun Content() {
     ) {
         item {
             Text(
-                text = "Prácticas Android",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Bold,
+                text = R.string.tvTitlePracticasAndroidText.getResourceStringAndroid(LocalContext.current),
+                style = titleFragment,
                 modifier = Modifier.padding(20.dp)
             )
         }
@@ -86,7 +87,7 @@ fun ItemPractica(practica: PracticaModel) {
 
         Text(
             text = practica.name,
-            fontSize = 20.sp,
+            style = subTitleItem,
             textAlign = TextAlign.End,
             modifier = Modifier
                 .constrainAs(titlePractica) {
