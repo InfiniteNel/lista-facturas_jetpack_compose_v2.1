@@ -30,7 +30,7 @@ import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticaModel
 import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticasName
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleItem
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
-import com.jroslar.listafacturasjetpackcomposev21.ui.view.ListaFacturasActivity
+import com.jroslar.listafacturasjetpackcomposev21.ui.view.listafacturas.ListaFacturasActivity
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview

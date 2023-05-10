@@ -1,4 +1,4 @@
-package com.jroslar.listafacturasjetpackcomposev21.ui.screens
+package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -24,6 +24,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
+import com.jroslar.listafacturasjetpackcomposev21.core.Constantes.Companion.FILTRAR_FACTURAS
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
@@ -49,7 +50,7 @@ private fun Toolbar(navController: NavController) {
         backgroundColor = Color.White,
         elevation = 0.dp,
         actions = {
-            IconButton(onClick = {  }) {
+            IconButton(onClick = { navController.navigate(FILTRAR_FACTURAS) }) {
                 Icon(painterResource(id = R.drawable.filtericon_3x), "")
             }
         }

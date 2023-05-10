@@ -11,6 +11,8 @@ class Constantes {
         const val URL_OBJECT_DETALLES = "facturas"
 
         const val MAIN_FACTURAS = "mainFacturas"
+
+        const val FILTRAR_FACTURAS = "FiltrarFacturas"
         enum class DescEstado(val descEstado: String) {
             PedienteDePago("Pendiente de pago"),
             Pagada("Pagada"),

@@ -1,4 +1,4 @@
-package com.jroslar.listafacturasjetpackcomposev21.ui.screens
+package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
