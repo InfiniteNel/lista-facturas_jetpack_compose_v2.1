@@ -1,21 +1,18 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Divider
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -29,33 +26,41 @@ import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
+import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleItem
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
+import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas.ListaFacturasViewModel
+import org.koin.androidx.compose.koinViewModel
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ListaFacturasScreen(navController: NavController) {
     Scaffold(
-        topBar = { Toolbar() },
-        content = { Content(navController) }
+        topBar = { Toolbar(navController) },
+        content = { Content() }
     )
 }
 
 //@Preview
 @Composable
-private fun Toolbar() {
-    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White, elevation = 0.dp)
+private fun Toolbar(navController: NavController) {
+    TopAppBar(
+        title = { Text(text = "") },
+        backgroundColor = Color.White,
+        elevation = 0.dp,
+        actions = {
+            IconButton(onClick = {  }) {
+                Icon(painterResource(id = R.drawable.filtericon_3x), "")
+            }
+        }
+    )
 }
 
 //@Preview
 @Composable
-private fun Content(navController: NavController) {
+private fun Content(viewModel: ListaFacturasViewModel = koinViewModel()) {
     val openDialog = remember { mutableStateOf(false) }
     DetailFacturasScreen(openDialog)
-
-    val listaPracticas = listOf(
-        FacturaModel("Pendiente de pago", 32F, "31 Ago 2020"),
-        FacturaModel("Anulada", 32F, "31 Jul 2020")
-    )
 
     LazyColumn(
         modifier = Modifier
@@ -70,8 +75,44 @@ private fun Content(navController: NavController) {
                 modifier = Modifier.padding(bottom = 20.dp, start = 20.dp)
             )
         }
-        items(listaPracticas.size) { position ->
-            ItemFacturas(factura = listaPracticas[position], navController, openDialog)
+        when (viewModel._state) {
+            ListaFacturasViewModel.ListaFacturasResult.DATA -> {
+                items(viewModel._data) {
+                    ItemFacturas(factura = it, openDialog)
+                }
+            }
+            ListaFacturasViewModel.ListaFacturasResult.LOADING -> {
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(15.dp)
+                        )
+                    }
+                }
+            }
+            else -> {
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            text = R.string.tvTitleNoDataListaFacturasText.getResourceStringAndroid(
+                                LocalContext.current),
+                            style = normalTextFragment,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(15.dp)
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -79,7 +120,6 @@ private fun Content(navController: NavController) {
 @Composable
 private fun ItemFacturas(
     factura: FacturaModel,
-    navController: NavController,
     openDialog: MutableState<Boolean>
 ) {
     ConstraintLayout(

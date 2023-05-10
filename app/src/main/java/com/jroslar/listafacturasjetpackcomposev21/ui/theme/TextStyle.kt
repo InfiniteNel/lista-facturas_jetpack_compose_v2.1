@@ -28,3 +28,9 @@ val normalTextDialogFragment = TextStyle(
     fontSize = 16.sp,
     fontWeight = FontWeight.Normal,
 )
+
+val normalTextFragment = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.Normal,
+)

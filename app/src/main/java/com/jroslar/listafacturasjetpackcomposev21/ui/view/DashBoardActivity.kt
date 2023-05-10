@@ -1,4 +1,4 @@
-package com.jroslar.listafacturasjetpackcomposev21.ui
+package com.jroslar.listafacturasjetpackcomposev21.ui.view
 
 import android.content.Intent
 import android.os.Bundle
