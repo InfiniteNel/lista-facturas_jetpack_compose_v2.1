@@ -1,20 +1,12 @@
 
-à
-Xapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/PracticaModel.kt,3\9\395d500dd52468f652ef2e664c72f1718c62ab79
 ç
 ]app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/dao/FacturasDao.kt,8\f\8f6237ee345d9bfc102743e8a12002e4aaa5f81d
-ë
-aapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/model/FacturaEntity.kt,1\4\14473f98f836c26dbfb5370b8d7f42bc2f730629
-é
-^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/FacturasDatabase.kt,1\b\1ba007e95aa2e0d867367743dad548c9876c7236
 
 Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt,a\1\a1a780576412fb7b8a28d5c393e458a2bd083f59
 í
 bapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/model/FacturaResponse.kt,4\2\42caa6a9285373d42c4a5c66a69be52718b1ca32
 å
 \app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/FacturasService.kt,2\8\28839a05170ecb950845a20ce0b492bd6daf2f99
-ì
-capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/model/FacturasResponse.kt,1\3\1336c56ee9ffe1d062428ab7d2b496288210b3ab
 v
 Fapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/App.kt,e\0\e06741227775e489213e061b31ee129f90cca195
 ó

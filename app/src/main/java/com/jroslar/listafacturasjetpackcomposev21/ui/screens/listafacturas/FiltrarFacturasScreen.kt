@@ -1,6 +1,7 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,12 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.jroslar.listafacturasjetpackcomposev21.R
+import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextDialogFragment
@@ -80,9 +83,9 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: Fil
                     ),
                     style = titleFragment
                 )
-                FiltrarPorFecha()
-                FiltrarPorImporte()
-                FiltrarPorEstado()
+                FiltrarPorFecha(viewModel)
+                FiltrarPorImporte(viewModel)
+                FiltrarPorEstado(viewModel)
             }
         }
         Column(
@@ -97,6 +100,8 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: Fil
         ) {
             Button(
                 onClick = {
+                    viewModel.aplicarFiltros()
+                    Log.d("prueba", viewModel._state.value.toString())
                     onAplicarClick(viewModel._state.value?: emptyList())
                 },
                 modifier = Modifier
@@ -133,7 +138,7 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: Fil
 }
 
 @Composable
-private fun FiltrarPorEstado() {
+private fun FiltrarPorEstado(viewModel: FiltrarFacturasViewModel) {
     val context = LocalContext.current
 
     Column(
@@ -142,23 +147,51 @@ private fun FiltrarPorEstado() {
         Text(
             text = R.string.tvTitleEstadoFiltrarFacturaText.getResourceStringAndroid(context),
             style = normalTextFragment,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 10.dp)
         )
-        CheckBoxStander(R.string.chPagadoFiltrarFacturaText.getResourceStringAndroid(context))
-        CheckBoxStander(R.string.chAnuladasFiltrarFacturaText.getResourceStringAndroid(context))
-        CheckBoxStander(R.string.chCuotaFijaFiltrarFacturaText.getResourceStringAndroid(context))
-        CheckBoxStander(R.string.chPedientesDePagoFiltrarFacturaText.getResourceStringAndroid(context))
-        CheckBoxStander(R.string.chPlanDePagoFiltrarFacturaText.getResourceStringAndroid(context))
+        CheckBoxStander(
+            R.string.chPagadoFiltrarFacturaText.getResourceStringAndroid(context),
+            Constantes.Companion.DescEstado.Pagada,
+            viewModel
+        )
+        CheckBoxStander(
+            R.string.chAnuladasFiltrarFacturaText.getResourceStringAndroid(context),
+            Constantes.Companion.DescEstado.Anuladas,
+            viewModel
+        )
+        CheckBoxStander(
+            R.string.chCuotaFijaFiltrarFacturaText.getResourceStringAndroid(context),
+            Constantes.Companion.DescEstado.CuotaFija,
+            viewModel
+        )
+        CheckBoxStander(
+            R.string.chPedientesDePagoFiltrarFacturaText.getResourceStringAndroid(context),
+            Constantes.Companion.DescEstado.PedienteDePago,
+            viewModel
+        )
+        CheckBoxStander(
+            R.string.chPlanDePagoFiltrarFacturaText.getResourceStringAndroid(context),
+            Constantes.Companion.DescEstado.PlanDePago,
+            viewModel
+        )
     }
 }
 
 @Composable
-private fun CheckBoxStander(text: String) {
+private fun CheckBoxStander(text: String, type: Constantes.Companion.DescEstado, viewModel: FiltrarFacturasViewModel) {
     var checkBoxValue by remember { mutableStateOf(false) }
     Row() {
         Checkbox(
             checked = checkBoxValue,
-            onCheckedChange = { checkBoxValue = it },
+            onCheckedChange = {
+                checkBoxValue = it
+                if (checkBoxValue) {
+                    viewModel._filtroEstado.value!!.add(type.descEstado)
+                } else {
+                    viewModel._filtroEstado.value!!.remove(type.descEstado)
+                }
+            },
             colors = CheckboxDefaults.colors(
                 checkedColor = MaterialTheme.colors.primary,
                 checkmarkColor = MaterialTheme.colors.onPrimary,
@@ -173,9 +206,8 @@ private fun CheckBoxStander(text: String) {
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-private fun FiltrarPorImporte() {
+private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
     val context = LocalContext.current
     var sliderPosition by remember { mutableStateOf(0f) }
 
@@ -242,7 +274,7 @@ private fun FiltrarPorImporte() {
 }
 
 @Composable
-private fun FiltrarPorFecha() {
+private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
     val context = LocalContext.current
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()

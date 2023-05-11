@@ -13,6 +13,7 @@ import org.koin.core.component.inject
 
 class FiltrarFacturasViewModel : ViewModel() {
     var _state: MutableLiveData<List<FacturaModel>> = MutableLiveData()
+    var _filtroEstado: MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
 
     private object Injection: KoinComponent {
         val getFacturasLocalUseCase by inject<GetFacturasLocalUseCase>()
@@ -30,23 +31,27 @@ class FiltrarFacturasViewModel : ViewModel() {
         }
     }
 
-    fun filterListByCheckBox(value: List<String>) {
+    private fun filterListByCheckBox(value: List<String>) {
         if (!value.isNullOrEmpty()) { _state.value = _state.value?.filter { value.contains(it.descEstado) } }
     }
 
-    fun filterListByImporte(value: Int) {
+    private fun filterListByImporte(value: Int) {
         _state.value = _state.value?.filter { it.importeOrdenacion < value }
     }
 
-    fun filterlistByFechaDesde(value: String) {
+    private fun filterlistByFechaDesde(value: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             _state.value = _state.value?.filter { value.castStringToDate().isBefore(it.fecha.castStringToDate())}
         }
     }
 
-    fun filterlistByFechaHasta(value: String) {
+    private fun filterlistByFechaHasta(value: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             _state.value = _state.value?.filter { value.castStringToDate().isAfter(it.fecha.castStringToDate())}
         }
+    }
+
+    fun aplicarFiltros() {
+        filterListByCheckBox(_filtroEstado.value!!)
     }
 }
