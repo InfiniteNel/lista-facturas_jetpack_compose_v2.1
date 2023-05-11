@@ -15,9 +15,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.NavController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
+import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextDialogFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
@@ -26,22 +26,24 @@ import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun FiltrarFacturasScreen(navController: NavController) {
+fun FiltrarFacturasScreen(onCloseClick: () -> Unit, onAplicarClick: (List<FacturaModel>) -> Unit) {
     Scaffold(
-        topBar = { Toolbar(navController) },
-        content = { Content() }
+        topBar = { Toolbar(onCloseClick) },
+        content = { Content(onAplicarClick) }
     )
 }
 
 //@Preview
 @Composable
-private fun Toolbar(navController: NavController) {
+private fun Toolbar(onCloseClick: () -> Unit) {
     TopAppBar(
         title = { Text(text = "") },
         backgroundColor = Color.White,
         elevation = 0.dp,
         actions = {
-            IconButton(onClick = {  }) {
+            IconButton(onClick = {
+                onCloseClick()
+            }) {
                 Icon(painterResource(id = R.drawable.close_icon), "")
             }
         }
@@ -49,8 +51,11 @@ private fun Toolbar(navController: NavController) {
 }
 
 @Composable
-private fun Content(viewModel: FiltrarFacturasViewModel = koinViewModel()) {
+private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: FiltrarFacturasViewModel = koinViewModel()) {
+    viewModel.getList()
+
     val context = LocalContext.current
+
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -91,7 +96,9 @@ private fun Content(viewModel: FiltrarFacturasViewModel = koinViewModel()) {
                 .background(Color.White)
         ) {
             Button(
-                onClick = {  },
+                onClick = {
+                    onAplicarClick(viewModel._state.value?: emptyList())
+                },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 10.dp, top = 10.dp),

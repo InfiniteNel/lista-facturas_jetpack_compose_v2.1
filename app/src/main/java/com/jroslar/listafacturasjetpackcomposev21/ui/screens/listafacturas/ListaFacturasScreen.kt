@@ -21,10 +21,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.NavController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
-import com.jroslar.listafacturasjetpackcomposev21.core.Constantes.Companion.FILTRAR_FACTURAS
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
@@ -35,22 +33,22 @@ import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun ListaFacturasScreen(navController: NavController) {
+fun ListaFacturasScreen(onFiltroClick: () -> Unit, updateData: List<FacturaModel>?) {
     Scaffold(
-        topBar = { Toolbar(navController) },
-        content = { Content() }
+        topBar = { Toolbar(onFiltroClick) },
+        content = { Content(updateData) }
     )
 }
 
 //@Preview
 @Composable
-private fun Toolbar(navController: NavController) {
+private fun Toolbar(onFiltroClick: () -> Unit) {
     TopAppBar(
         title = { Text(text = "") },
         backgroundColor = Color.White,
         elevation = 0.dp,
         actions = {
-            IconButton(onClick = { navController.navigate(FILTRAR_FACTURAS) }) {
+            IconButton(onClick = { onFiltroClick() }) {
                 Icon(painterResource(id = R.drawable.filtericon_3x), "")
             }
         }
@@ -59,7 +57,7 @@ private fun Toolbar(navController: NavController) {
 
 //@Preview
 @Composable
-private fun Content(viewModel: ListaFacturasViewModel = koinViewModel()) {
+private fun Content(updateData: List<FacturaModel>?, viewModel: ListaFacturasViewModel = koinViewModel()) {
     val openDialog = remember { mutableStateOf(false) }
     DetailFacturasScreen(openDialog)
 
@@ -97,6 +95,9 @@ private fun Content(viewModel: ListaFacturasViewModel = koinViewModel()) {
                 }
             }
             else -> {
+                if (updateData != null ){
+                    viewModel.getList(updateData)
+                }
                 item {
                     Column(
                         modifier = Modifier
