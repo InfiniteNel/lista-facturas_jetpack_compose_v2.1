@@ -1,6 +1,9 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
+import android.content.Context
+import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +20,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
+import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.castStringToDate
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextDialogFragment
@@ -25,6 +29,8 @@ import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.view.listafacturas.NavArgs
 import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas.FiltrarFacturasViewModel
 import org.koin.androidx.compose.koinViewModel
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -287,6 +293,9 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
 @Composable
 private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
     val context = LocalContext.current
+    val mDateDesde = remember { mutableStateOf(R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context)) }
+    val mDateHasta = remember { mutableStateOf(R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context)) }
+
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -311,7 +320,9 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
             }
         )
         Button(
-            onClick = {  },
+            onClick = {
+                showDatePicker(mDateDesde, context)
+            },
             modifier = Modifier.constrainAs(btFechaDesde) {
                 top.linkTo(tvTextFechaDesde.bottom, margin = 5.dp)
                 start.linkTo(parent.start)
@@ -320,7 +331,7 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Gray)
         ) {
             Text(
-                text = R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context),
+                text = mDateDesde.value,
                 style = normalTextFragment
             )
         }
@@ -334,7 +345,9 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
             }
         )
         Button(
-            onClick = {  },
+            onClick = {
+                showDatePicker(mDateHasta, context)
+            },
             modifier = Modifier.constrainAs(btFechaHasta) {
                 top.linkTo(tvTextFechaHasta.bottom, margin = 5.dp)
                 start.linkTo(btFechaDesde.end, margin = 20.dp)
@@ -343,7 +356,7 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Gray)
         ) {
             Text(
-                text = R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context),
+                text = mDateHasta.value,
                 style = normalTextFragment
             )
         }
@@ -358,4 +371,20 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
                 .padding(vertical = 15.dp)
         )
     }
+}
+
+private fun showDatePicker(date: MutableState<String>, context: Context) {
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
+
+    val dpdFecha = DatePickerDialog(context, { _, year, monthOfYear, dayOfMonth ->
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val newdf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale("es"))
+            date.value = "$dayOfMonth/${monthOfYear+1}/$year".castStringToDate().format(newdf)
+        }
+    }, year, month, day)
+    dpdFecha.datePicker.maxDate = Date().time
+    dpdFecha.show()
 }
