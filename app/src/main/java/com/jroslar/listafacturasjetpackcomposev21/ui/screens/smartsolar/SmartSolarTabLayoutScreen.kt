@@ -159,7 +159,7 @@ fun Tabs(pagerState: PagerState) {
 fun TabsContent(pagerState: PagerState) {
     HorizontalPager(state = pagerState) { page ->
         when (page) {
-            0 -> TabContentScreen(data = "Welcome to Home Screen")
+            0 -> SmartSolarMiInstalacionScreen()
             1 -> TabContentScreen(data = "Welcome to Example1 Screen")
             2 -> TabContentScreen(data = "Welcome to Example2 Screen")
         }

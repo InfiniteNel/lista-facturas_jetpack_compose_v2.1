@@ -35,4 +35,9 @@
     <string name="tab_text_3">Detalles</string>
     <string name="toolbarDetalleBackText">Atrás</string>
     <string name="tvTitleSmartSolarText">Smart Solar</string>
+
+    <!-- Fragmetn Samrt Solar Mi Instalacion-->
+    <string name="tvInfoTextMiInstalacionSmartSolarText">Aquí tienes los datos de tu instalación fotovoltaica en tiempo real.</string>
+    <string name="tvAutoconsumoMiInstalacionSmartSolarText">"Autoconsumo: "</string>
+    <string name="tvAutoConsumoValueMiInstalacionSmartSolarText">92%</string>
 </resources>
