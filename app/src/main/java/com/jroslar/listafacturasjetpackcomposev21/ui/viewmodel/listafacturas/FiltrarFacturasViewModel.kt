@@ -15,6 +15,8 @@ class FiltrarFacturasViewModel : ViewModel() {
     var _state: MutableLiveData<List<FacturaModel>> = MutableLiveData()
     var _filtroEstado: MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
     var _filtroImporte: MutableLiveData<Int> = MutableLiveData()
+    var _filtroFechaDesde: MutableLiveData<String> = MutableLiveData()
+    var _filtroFechaHasta: MutableLiveData<String> = MutableLiveData()
 
     private object Injection: KoinComponent {
         val getFacturasLocalUseCase by inject<GetFacturasLocalUseCase>()
@@ -52,8 +54,21 @@ class FiltrarFacturasViewModel : ViewModel() {
         }
     }
 
+    private fun comprobarFechas() {
+        var text = _filtroFechaDesde.value
+        val regex = "\\d{1,2} [A-Z a-z]{3} \\d{4}".toRegex()
+        if (text != null && regex.matches(text)) {
+            filterlistByFechaDesde(text.toString())
+        }
+        text = _filtroFechaHasta.value
+        if (text != null && regex.matches(text)) {
+            filterlistByFechaHasta(text.toString())
+        }
+    }
+
     fun aplicarFiltros() {
         filterListByCheckBox(_filtroEstado.value!!)
         filterListByImporte(_filtroImporte.value!!)
+        comprobarFechas()
     }
 }

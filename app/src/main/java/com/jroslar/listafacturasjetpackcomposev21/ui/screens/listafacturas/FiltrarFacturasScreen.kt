@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavHostController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
@@ -321,7 +322,7 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
         )
         Button(
             onClick = {
-                showDatePicker(mDateDesde, context)
+                showDatePicker(mDateDesde, context, viewModel._filtroFechaDesde)
             },
             modifier = Modifier.constrainAs(btFechaDesde) {
                 top.linkTo(tvTextFechaDesde.bottom, margin = 5.dp)
@@ -346,7 +347,7 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
         )
         Button(
             onClick = {
-                showDatePicker(mDateHasta, context)
+                showDatePicker(mDateHasta, context, viewModel._filtroFechaHasta)
             },
             modifier = Modifier.constrainAs(btFechaHasta) {
                 top.linkTo(tvTextFechaHasta.bottom, margin = 5.dp)
@@ -373,7 +374,11 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
     }
 }
 
-private fun showDatePicker(date: MutableState<String>, context: Context) {
+private fun showDatePicker(
+    date: MutableState<String>,
+    context: Context,
+    viewModelData: MutableLiveData<String>
+) {
     val c = Calendar.getInstance()
     val year = c.get(Calendar.YEAR)
     val month = c.get(Calendar.MONTH)
@@ -383,6 +388,7 @@ private fun showDatePicker(date: MutableState<String>, context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val newdf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale("es"))
             date.value = "$dayOfMonth/${monthOfYear+1}/$year".castStringToDate().format(newdf)
+            viewModelData.value = date.value
         }
     }, year, month, day)
     dpdFecha.datePicker.maxDate = Date().time
