@@ -25,22 +25,12 @@ S
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Shape.kt,6\f\6f6aaef01b6e9ab05982908affe8e501b750aec3
 ~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Color.kt,4\a\4a5e8b85e520a9a0092b80e4b43b97320622af6c
-”
-dapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/dashboard/DashBoardScreen.kt,d\f\dfb93be01b155cb9f5a973e49c57a2c7a1a766cc
 ~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Theme.kt,f\3\f3da3758e13c6d9ce53a754bbbf70560463b50fd
-“
-capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 
 `app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/domain/GetFacturasFromApiUseCase.kt,1\6\16e51df0ed74b3cd46a8a0d9bbf5cfe4cca123a7
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-Ž
-^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/FacturasDatabase.kt,1\b\1ba007e95aa2e0d867367743dad548c9876c7236
 ˆ
 Xapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/FacturasModel.kt,0\2\02ccdcc41f2ce0202bfe03cecf5afdb85c3dcbeb
 “

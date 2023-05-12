@@ -30,6 +30,10 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ListaFacturasJetpackComposeV21" />
+        <activity android:name=".ui.view.smartsolar.SmartSolarActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ListaFacturasJetpackComposeV21" />
     </application>
 
 </manifest>

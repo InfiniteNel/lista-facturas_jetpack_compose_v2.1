@@ -27,4 +27,12 @@
     <string name="chCuotaFijaFiltrarFacturaText">Cuota Fija</string>
     <string name="chAnuladasFiltrarFacturaText">Anuladas</string>
     <string name="chPagadoFiltrarFacturaText">Pagadas</string>
+
+    <!-- Activity Smart Solar -->
+    <string name="title_activity_smart_solar">SmartSolarActivity</string>
+    <string name="tab_text_1">Mi instalación</string>
+    <string name="tab_text_2">Energía</string>
+    <string name="tab_text_3">Detalles</string>
+    <string name="toolbarDetalleBackText">Atrás</string>
+    <string name="tvTitleSmartSolarText">Smart Solar</string>
 </resources>

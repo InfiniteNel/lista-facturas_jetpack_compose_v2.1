@@ -31,6 +31,7 @@ import com.jroslar.listafacturasjetpackcomposev21.data.model.PracticasName
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleItem
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.view.listafacturas.ListaFacturasActivity
+import com.jroslar.listafacturasjetpackcomposev21.ui.view.smartsolar.SmartSolarActivity
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Preview
@@ -106,11 +107,25 @@ private fun ItemPractica(practica: PracticaModel) {
                     bottom.linkTo(parent.bottom)
                 }
                 .clickable {
-                    ContextCompat.startActivity(
-                        context,
-                        Intent(context, ListaFacturasActivity::class.java),
-                        null
-                    )
+                    when(practica.tipo){
+                        PracticasName.PRACTICA1 -> {
+                            ContextCompat.startActivity(
+                                context,
+                                Intent(context, ListaFacturasActivity::class.java),
+                                null
+                            )
+                        }
+                        PracticasName.PRACTICA2 -> {
+                            ContextCompat.startActivity(
+                                context,
+                                Intent(context, SmartSolarActivity::class.java),
+                                null
+                            )
+                        }
+                        else -> {
+                            //
+                        }
+                    }
                 }
         )
         Divider(
