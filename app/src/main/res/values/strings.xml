@@ -40,4 +40,7 @@
     <string name="tvInfoTextMiInstalacionSmartSolarText">Aquí tienes los datos de tu instalación fotovoltaica en tiempo real.</string>
     <string name="tvAutoconsumoMiInstalacionSmartSolarText">"Autoconsumo: "</string>
     <string name="tvAutoConsumoValueMiInstalacionSmartSolarText">92%</string>
+
+    <!-- Fragmetn Samrt Solar Energia-->
+    <string name="tvInfoTextEnergiaSmartSolarText">Estamos trabajando en mejorar la App. Tu paneles solares siguen produciendo en breve podrás seguir viendo tu producción solar. Sentimos las molestias.</string>
 </resources>
