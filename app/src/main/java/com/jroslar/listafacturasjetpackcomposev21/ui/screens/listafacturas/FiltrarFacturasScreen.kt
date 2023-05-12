@@ -1,7 +1,6 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,10 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.jroslar.listafacturasjetpackcomposev21.R
@@ -101,7 +98,6 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: Fil
             Button(
                 onClick = {
                     viewModel.aplicarFiltros()
-                    Log.d("prueba", viewModel._state.value.toString())
                     onAplicarClick(viewModel._state.value?: emptyList())
                 },
                 modifier = Modifier

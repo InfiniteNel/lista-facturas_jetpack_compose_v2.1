@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.ListaFacturasJetpackComposeV21Theme
 
 class ListaFacturasActivity : ComponentActivity() {
+
     lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

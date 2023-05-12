@@ -69,6 +69,7 @@ class ListaFacturasViewModel constructor(private val context: Context): ViewMode
     }
 
     fun getList(data: List<FacturaModel>) {
+        _state = ListaFacturasResult.LOADING
         if (data.isNullOrEmpty()) {
             _data = emptyList()
             _state = ListaFacturasResult.NO_DATA

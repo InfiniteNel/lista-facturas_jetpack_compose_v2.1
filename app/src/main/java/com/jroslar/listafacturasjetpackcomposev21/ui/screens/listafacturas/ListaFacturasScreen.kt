@@ -1,6 +1,7 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,10 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,10 +31,10 @@ import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun ListaFacturasScreen(onFiltroClick: () -> Unit, updateData: List<FacturaModel>?) {
+fun ListaFacturasScreen(onFiltroClick: () -> Unit, viewModel: ListaFacturasViewModel) {
     Scaffold(
         topBar = { Toolbar(onFiltroClick) },
-        content = { Content(updateData) }
+        content = { Content(viewModel) }
     )
 }
 
@@ -57,8 +55,9 @@ private fun Toolbar(onFiltroClick: () -> Unit) {
 
 //@Preview
 @Composable
-private fun Content(updateData: List<FacturaModel>?, viewModel: ListaFacturasViewModel = koinViewModel()) {
+private fun Content(viewModel: ListaFacturasViewModel) {
     val openDialog = remember { mutableStateOf(false) }
+
     DetailFacturasScreen(openDialog)
 
     LazyColumn(
@@ -67,6 +66,7 @@ private fun Content(updateData: List<FacturaModel>?, viewModel: ListaFacturasVie
             .background(Color.White)
     ) {
         item {
+
             Text(
                 text = R.string.tvTitleFacturaListaFacturasText.getResourceStringAndroid(
                     LocalContext.current),
@@ -95,9 +95,6 @@ private fun Content(updateData: List<FacturaModel>?, viewModel: ListaFacturasVie
                 }
             }
             else -> {
-                if (updateData != null ){
-                    viewModel.getList(updateData)
-                }
                 item {
                     Column(
                         modifier = Modifier
