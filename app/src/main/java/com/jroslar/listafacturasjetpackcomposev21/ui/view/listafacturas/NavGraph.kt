@@ -12,11 +12,11 @@ import org.koin.androidx.compose.koinViewModel
 
 sealed class Screen(val route: String) {
     object ListaFacturas : Screen("lista_facturas")
-    object FiltrarFacturas : Screen("filtrar_facturas")
+    object FiltrarFacturas : Screen("filtrar_facturas/")
 }
 
 enum class NavArgs(val key: String) {
-    ItemListaFacturas("item_lista_facturas")
+    ItemMaxValueListaFacturas("item_max_value_lista_facturas")
 }
 
 @Composable
@@ -27,21 +27,22 @@ fun SetUpNavGraph(navController: NavHostController) {
 
             ListaFacturasScreen(
                 onFiltroClick = {
+                    navController.currentBackStackEntry?.savedStateHandle?.set(NavArgs.ItemMaxValueListaFacturas.key, viewModel._maxValueImporte.value?.toInt() ?: 0)
                     navController.navigate(Screen.FiltrarFacturas.route)
                 }, viewModel)
         }
         composable(
             route = Screen.FiltrarFacturas.route
         ) {
-
             FiltrarFacturasScreen(
                 onCloseClick = {
                     navController.navigateUp()
                 },
-                onAplicarClick = {
-                    viewModel.getList(it)
+                onAplicarClick = {facturas ->
+                    viewModel.getList(facturas)
                     navController.navigateUp()
-                }
+                },
+                navController
             )
         }
     }

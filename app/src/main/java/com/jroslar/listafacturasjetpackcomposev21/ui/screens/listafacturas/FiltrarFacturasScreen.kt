@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavHostController
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
@@ -21,15 +22,20 @@ import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextDialogFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
+import com.jroslar.listafacturasjetpackcomposev21.ui.view.listafacturas.NavArgs
 import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas.FiltrarFacturasViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun FiltrarFacturasScreen(onCloseClick: () -> Unit, onAplicarClick: (List<FacturaModel>) -> Unit) {
+fun FiltrarFacturasScreen(
+    onCloseClick: () -> Unit,
+    onAplicarClick: (List<FacturaModel>) -> Unit,
+    navController: NavHostController
+) {
     Scaffold(
         topBar = { Toolbar(onCloseClick) },
-        content = { Content(onAplicarClick) }
+        content = { Content(onAplicarClick, navController) }
     )
 }
 
@@ -51,7 +57,7 @@ private fun Toolbar(onCloseClick: () -> Unit) {
 }
 
 @Composable
-private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: FiltrarFacturasViewModel = koinViewModel()) {
+private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, navController: NavHostController, viewModel: FiltrarFacturasViewModel = koinViewModel()) {
     viewModel.getList()
 
     val context = LocalContext.current
@@ -81,7 +87,7 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, viewModel: Fil
                     style = titleFragment
                 )
                 FiltrarPorFecha(viewModel)
-                FiltrarPorImporte(viewModel)
+                FiltrarPorImporte(viewModel, navController)
                 FiltrarPorEstado(viewModel)
             }
         }
@@ -203,9 +209,11 @@ private fun CheckBoxStander(text: String, type: Constantes.Companion.DescEstado,
 }
 
 @Composable
-private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
+private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController: NavHostController) {
     val context = LocalContext.current
     var sliderPosition by remember { mutableStateOf(0f) }
+    val maxValue by remember { mutableStateOf(navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1) }
+    val minValue = 0
 
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()
@@ -222,7 +230,7 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
             }
         )
         Text(
-            text = "",
+            text = "$minValue${R.string.monedaValue.getResourceStringAndroid(context)}",
             style = normalTextFragment,
             modifier = Modifier.constrainAs(tvMinValue) {
                 top.linkTo(tvTitleImporte.bottom, margin = 10.dp)
@@ -230,7 +238,7 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
             }
         )
         Text(
-            text = "",
+            text = "$minValue${R.string.monedaValue.getResourceStringAndroid(context)} - ${sliderPosition.toInt()}${R.string.monedaValue.getResourceStringAndroid(context)}",
             style = normalTextFragment,
             modifier = Modifier.constrainAs(tvRangeValue) {
                 top.linkTo(tvTitleImporte.bottom, margin = 6.dp)
@@ -239,7 +247,7 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
             }
         )
         Text(
-            text = "",
+            text = "$maxValue${R.string.monedaValue.getResourceStringAndroid(context)}",
             style = normalTextFragment,
             modifier = Modifier.constrainAs(tvMaxValue) {
                 top.linkTo(tvTitleImporte.bottom, margin = 10.dp)
@@ -249,6 +257,7 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel) {
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
+            valueRange = minValue.toFloat()..maxValue.toFloat(),
             modifier = Modifier
                 .constrainAs(slImporte) {
                     top.linkTo(tvMinValue.bottom)
