@@ -1,8 +1,6 @@
 
 ç
 ]app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/dao/FacturasDao.kt,8\f\8f6237ee345d9bfc102743e8a12002e4aaa5f81d
-
-Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt,a\1\a1a780576412fb7b8a28d5c393e458a2bd083f59
 í
 bapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/model/FacturaResponse.kt,4\2\42caa6a9285373d42c4a5c66a69be52718b1ca32
 å
@@ -35,8 +33,6 @@ Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Theme.kt
 capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-
-Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Constantes.kt,6\5\656143f8d8fd8d9d23d9c1d7ec607e7a9cbc16c4
 ê
 `app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/domain/GetFacturasFromApiUseCase.kt,1\6\16e51df0ed74b3cd46a8a0d9bbf5cfe4cca123a7
 @

@@ -14,6 +14,7 @@ import org.koin.core.component.inject
 class FiltrarFacturasViewModel : ViewModel() {
     var _state: MutableLiveData<List<FacturaModel>> = MutableLiveData()
     var _filtroEstado: MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
+    var _filtroImporte: MutableLiveData<Int> = MutableLiveData()
 
     private object Injection: KoinComponent {
         val getFacturasLocalUseCase by inject<GetFacturasLocalUseCase>()
@@ -53,5 +54,6 @@ class FiltrarFacturasViewModel : ViewModel() {
 
     fun aplicarFiltros() {
         filterListByCheckBox(_filtroEstado.value!!)
+        filterListByImporte(_filtroImporte.value!!)
     }
 }

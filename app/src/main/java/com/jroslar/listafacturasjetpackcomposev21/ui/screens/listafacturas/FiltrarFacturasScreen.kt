@@ -215,6 +215,9 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
     val maxValue by remember { mutableStateOf(navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1) }
     val minValue = 0
 
+    sliderPosition = maxValue.toFloat()
+    viewModel._filtroImporte.value = maxValue
+
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -256,7 +259,10 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
         )
         Slider(
             value = sliderPosition,
-            onValueChange = { sliderPosition = it },
+            onValueChange = {
+                sliderPosition = it;
+                viewModel._filtroImporte.value = it.toInt()
+            },
             valueRange = minValue.toFloat()..maxValue.toFloat(),
             modifier = Modifier
                 .constrainAs(slImporte) {
