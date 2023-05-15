@@ -13,8 +13,6 @@ gapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/retro
 Wapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/FacturasRepository.kt,d\9\d976f3a707908034310e624edbcdbc189b5d415c
 }
 Mapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Type.kt,e\b\eba83aedd56ed402647294bbfc33b178ef47a8e2
-~
-Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Shape.kt,6\f\6f6aaef01b6e9ab05982908affe8e501b750aec3
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
@@ -35,8 +33,6 @@ Xapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/Factura
 capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/model/FacturasResponse.kt,1\3\1336c56ee9ffe1d062428ab7d2b496288210b3ab
 à
 Xapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/PracticaModel.kt,3\9\395d500dd52468f652ef2e664c72f1718c62ab79
-v
-Fapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/App.kt,e\0\e06741227775e489213e061b31ee129f90cca195
 ë
 aapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/model/FacturaEntity.kt,1\4\14473f98f836c26dbfb5370b8d7f42bc2f730629
 õ
@@ -49,8 +45,6 @@ Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt
 ^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/FacturasDatabase.kt,1\b\1ba007e95aa2e0d867367743dad548c9876c7236
 ì
 capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
-ù
-mapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/listafacturas/DetailFacturasScreen.kt,a\4\a4b34e95ec3fb44ddfd29c87997c4d30e13b3844
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 ï

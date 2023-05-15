@@ -18,8 +18,6 @@ S
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 ~
-Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Shape.kt,6\f\6f6aaef01b6e9ab05982908affe8e501b750aec3
-~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Color.kt,4\a\4a5e8b85e520a9a0092b80e4b43b97320622af6c
 ~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Theme.kt,f\3\f3da3758e13c6d9ce53a754bbbf70560463b50fd
@@ -35,8 +33,6 @@ capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/model
 Xapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/PracticaModel.kt,3\9\395d500dd52468f652ef2e664c72f1718c62ab79
 á
 Wapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/model/FacturaModel.kt,c\7\c70399b500d4dea095a6cd696999be71485544d5
-v
-Fapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/App.kt,e\0\e06741227775e489213e061b31ee129f90cca195
 ë
 aapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/model/FacturaEntity.kt,1\4\14473f98f836c26dbfb5370b8d7f42bc2f730629
 
@@ -49,8 +45,6 @@ Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt
 kapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/listafacturas/ListaFacturasActivity.kt,e\8\e8542719f0b7cde6263ec53f592900762a104f65
 ì
 capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
-ù
-mapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/listafacturas/DetailFacturasScreen.kt,a\4\a4b34e95ec3fb44ddfd29c87997c4d30e13b3844
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 ï

@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import coil.compose.rememberAsyncImagePainter
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
+import com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas.DetailFacturasScreen
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.smartsolar.SmartSolarDetallesViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -76,6 +77,10 @@ private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String) {
 @Composable
 private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String, context: Context, idIcon: Int) {
     var text by remember { mutableStateOf(textViewModel) }
+    val openDialog = remember { mutableStateOf(false) }
+
+    SmartSolarAutoconsumoScreen(openDialog)
+
     TextField(
         value = text,
         onValueChange = { text = it },
@@ -94,7 +99,7 @@ private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String, co
         ),
         textStyle = normalTextFragment,
         trailingIcon = {
-            IconButton(onClick = {  }) {
+            IconButton(onClick = { openDialog.value = true }) {
                 Image(
                     rememberAsyncImagePainter(ContextCompat.getDrawable(context, idIcon)),
                     contentDescription = ""

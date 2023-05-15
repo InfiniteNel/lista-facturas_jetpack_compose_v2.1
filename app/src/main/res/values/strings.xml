@@ -47,7 +47,7 @@
     <!-- Fragment Smart Solar Detalles -->
     <string name="tvEstadoSolicitudSmartSolarText">Estado solicitud autoconsumo</string>
     <string name="tvTiempoEstimadoSmartSolarText">El tiempo estimado de activación de tu autoconsumo es de 1 a 2 meses, éste variará en función de tu comunidad autónoma y distribuidora</string>
-    <string name="vtAceptarSmartSolarText">Aceptar</string>
+    <string name="btAceptarSmartSolarText">Aceptar</string>
     <string name="tietCAUSmaerSolarHint">CAU (Código Autoconsumo)</string>
     <string name="tietEstadoAutoconsumidorSmartSolarHint">Estado solicitud alta autoconsumidor</string>
     <string name="tietTipoConsumoSmartSolarHint">Tipo autoconsumo</string>
