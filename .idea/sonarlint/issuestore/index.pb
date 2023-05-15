@@ -17,10 +17,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
-~
-Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Color.kt,4\a\4a5e8b85e520a9a0092b80e4b43b97320622af6c
-~
-Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Theme.kt,f\3\f3da3758e13c6d9ce53a754bbbf70560463b50fd
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 
@@ -38,11 +34,7 @@ aapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/mode
 
 Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt,a\1\a1a780576412fb7b8a28d5c393e458a2bd083f59
 Ž
-^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/listafacturas/NavGraph.kt,e\3\e374887bde1184340c01b652321aa396a40be416
-Ž
 ^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/FacturasDatabase.kt,1\b\1ba007e95aa2e0d867367743dad548c9876c7236
-›
-kapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/listafacturas/ListaFacturasActivity.kt,e\8\e8542719f0b7cde6263ec53f592900762a104f65
 “
 capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
 P

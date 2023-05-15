@@ -132,6 +132,12 @@ private fun Content(onAplicarClick: (List<FacturaModel>) -> Unit, navController:
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 10.dp),
                 shape = MaterialTheme.shapes.small,
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 0.dp,
+                    hoveredElevation = 0.dp,
+                    focusedElevation = 0.dp
+                ),
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
             ) {
                 Text(
