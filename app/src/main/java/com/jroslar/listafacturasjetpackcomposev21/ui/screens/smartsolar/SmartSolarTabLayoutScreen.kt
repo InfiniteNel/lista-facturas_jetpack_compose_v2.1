@@ -2,10 +2,10 @@ package com.jroslar.listafacturasjetpackcomposev21.ui.screens.smartsolar
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
@@ -30,6 +29,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.*
+import androidx.core.content.ContextCompat
+import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.pager.*
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
@@ -50,14 +51,46 @@ fun SmartSolarScreen() {
 @Preview(showBackground = true)
 @Composable
 private fun Toolbar() {
+    val context = LocalContext.current as Activity
     TopAppBar(
-        title = { Text(text = "") },
         backgroundColor = Color.White,
         elevation = 0.dp
-    )
+    ) {
+        Button(
+            onClick = { context.finish() },
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+            elevation = ButtonDefaults.elevation(
+                defaultElevation = 0.dp,
+                pressedElevation = 0.dp,
+                hoveredElevation = 0.dp,
+                focusedElevation = 0.dp
+            )
+        ) {
+            Box(
+                modifier = Modifier,
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                ) {
+                    Icon(
+                        rememberAsyncImagePainter(ContextCompat.getDrawable(context, R.drawable.baseline_keyboard_arrow_left_24)),
+                        contentDescription = "",
+                        tint = MaterialTheme.colors.primary
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = R.string.toolbarDetalleBackText.getResourceStringAndroid(context),
+                        style = normalTextFragment,
+                        color = MaterialTheme.colors.primary
+                    )
+                }
+            }
+        }
+    }
 }
 
-//@Preview
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun Content() {
@@ -123,10 +156,12 @@ fun Tabs(pagerState: PagerState) {
         modifier = Modifier.padding(start = 5.dp),
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
-                modifier = Modifier.customTabIndicatorOffset(
-                    currentTabPosition = tabPositions[pagerState.currentPage],
-                    tabWidth = tabWidths[pagerState.currentPage]
-                ).clip(RoundedCornerShape(40.dp))
+                modifier = Modifier
+                    .customTabIndicatorOffset(
+                        currentTabPosition = tabPositions[pagerState.currentPage],
+                        tabWidth = tabWidths[pagerState.currentPage]
+                    )
+                    .clip(RoundedCornerShape(40.dp))
             )
         },
         divider = {
