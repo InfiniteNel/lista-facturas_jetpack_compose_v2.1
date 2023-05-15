@@ -35,9 +35,5 @@ aapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/mode
 Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Extensions.kt,a\1\a1a780576412fb7b8a28d5c393e458a2bd083f59
 Ž
 ^app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/database/FacturasDatabase.kt,1\b\1ba007e95aa2e0d867367743dad548c9876c7236
-“
-capp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/dashboard/DashBoardActivity.kt,a\6\a65553d3f541931d822ea8bcf3f8d962712d754a
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-•
-eapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/smartsolar/SmartSolarActivity.kt,1\9\19f952c8ebf4660019112292743129dabf3964ec

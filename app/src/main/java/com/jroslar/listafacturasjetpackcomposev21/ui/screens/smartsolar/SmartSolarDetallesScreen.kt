@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import coil.compose.rememberAsyncImagePainter
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
-import com.jroslar.listafacturasjetpackcomposev21.ui.screens.listafacturas.DetailFacturasScreen
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.smartsolar.SmartSolarDetallesViewModel
 import org.koin.androidx.compose.koinViewModel

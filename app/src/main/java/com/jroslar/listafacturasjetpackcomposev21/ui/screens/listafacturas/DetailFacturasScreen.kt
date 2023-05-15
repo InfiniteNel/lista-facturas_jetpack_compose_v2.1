@@ -31,7 +31,6 @@ fun DetailFacturasScreen(openDialog: MutableState<Boolean>) {
             DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = true)
         ) {
             Surface(
-                shape = RoundedCornerShape(16.dp)
             ) {
                 Column() {
                     Text(
