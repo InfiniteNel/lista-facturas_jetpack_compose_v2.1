@@ -74,6 +74,9 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager:0.13.0"
     implementation "com.google.accompanist:accompanist-pager-indicators:0.13.0"
 
+    //Coil Compose
+    implementation("io.coil-kt:coil-compose:2.3.0")
+
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     // LiveData

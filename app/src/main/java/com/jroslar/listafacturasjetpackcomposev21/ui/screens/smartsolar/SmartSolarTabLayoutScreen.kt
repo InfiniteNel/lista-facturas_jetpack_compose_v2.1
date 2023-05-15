@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.*
 import com.google.accompanist.pager.*
 import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
+import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
 import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
 import kotlinx.coroutines.launch
 
@@ -136,6 +137,7 @@ fun Tabs(pagerState: PagerState) {
                 text = {
                     Text(
                         list[index],
+                        style = normalTextFragment,
                         fontWeight = if (pagerState.currentPage == index) FontWeight.Bold else FontWeight.Normal,
                         onTextLayout = { textLayoutResult ->
                             tabWidths[pagerState.currentPage] =
@@ -161,23 +163,7 @@ fun TabsContent(pagerState: PagerState) {
         when (page) {
             0 -> SmartSolarMiInstalacionScreen()
             1 -> SmartSolarEnergiaScreen()
-            2 -> TabContentScreen(data = "Welcome to Example2 Screen")
+            2 -> SmartSolarDetallesScreen()
         }
-    }
-}
-
-@Composable
-fun TabContentScreen(data: String) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = data,
-            style = MaterialTheme.typography.h5,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
-        )
     }
 }

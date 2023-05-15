@@ -3,10 +3,13 @@ package com.jroslar.listafacturasjetpackcomposev21.di
 import co.infinum.retromock.Retromock
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes.Companion.URL_SERVIDOR_DETALLES
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes.Companion.URL_SERVIDOR_FACTURAS
+import com.jroslar.listafacturasjetpackcomposev21.data.DetallesRepository
 import com.jroslar.listafacturasjetpackcomposev21.data.FacturasRepository
+import com.jroslar.listafacturasjetpackcomposev21.data.network.DetallesService
 import com.jroslar.listafacturasjetpackcomposev21.domain.GetFacturasFromApiUseCase
 import com.jroslar.listafacturasjetpackcomposev21.domain.GetFacturasLocalUseCase
 import com.jroslar.listafacturasjetpackcomposev21.data.network.FacturasService
+import com.jroslar.listafacturasjetpackcomposev21.domain.GetDetallesFromApiUseCase
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.json.*
@@ -56,10 +59,13 @@ val dataModule = module {
     }
 
     factory { FacturasService(get(named(Qualifier.FacturasRetrofit)), get(named(Qualifier.FacturasRetromock)), get()) }
+    factory { DetallesService(get(named(Qualifier.DetallesRetrofit)), get(named(Qualifier.DetallesRetromock))) }
     factoryOf(::FacturasRepository)
+    factoryOf(::DetallesRepository)
 
     factoryOf(::GetFacturasFromApiUseCase)
     factoryOf(::GetFacturasLocalUseCase)
+    factoryOf(::GetDetallesFromApiUseCase)
 }
 
 enum class Qualifier {
