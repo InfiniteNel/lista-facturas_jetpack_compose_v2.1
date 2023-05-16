@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
@@ -141,7 +142,7 @@ fun Tabs(pagerState: PagerState) {
         R.string.tab_text_3.getResourceStringAndroid(context),
     )
     val density = LocalDensity.current
-    val tabWidths = remember {
+    val tabWidths = rememberSaveable {
         val tabWidthStateList = mutableStateListOf<Dp>()
         repeat(list.size) {
             tabWidthStateList.add(0.dp)

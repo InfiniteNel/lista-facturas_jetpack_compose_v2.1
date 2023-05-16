@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,7 +53,7 @@ fun SmartSolarDetallesScreen(viewModel: SmartSolarDetallesViewModel = koinViewMo
 
 @Composable
 private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String) {
-    var text by remember { mutableStateOf(textViewModel) }
+    var text by rememberSaveable { mutableStateOf(textViewModel) }
     TextField(
         value = text,
         onValueChange = { text = it },
@@ -75,8 +76,8 @@ private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String) {
 
 @Composable
 private fun TextFieldDetallesScreen(textLabel: String, textViewModel: String, context: Context, idIcon: Int) {
-    var text by remember { mutableStateOf(textViewModel) }
-    val openDialog = remember { mutableStateOf(false) }
+    var text by rememberSaveable { mutableStateOf(textViewModel) }
+    val openDialog = rememberSaveable { mutableStateOf(false) }
 
     SmartSolarAutoconsumoScreen(openDialog)
 
