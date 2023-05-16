@@ -1,20 +1,23 @@
 package com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas
 
+import android.content.Context
 import android.os.Build
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.castStringToDate
+import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
 import com.jroslar.listafacturasjetpackcomposev21.domain.GetFacturasLocalUseCase
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class FiltrarFacturasViewModel : ViewModel() {
+class FiltrarFacturasViewModel constructor(private val context: Context): ViewModel() {
     var _state by mutableStateOf<List<FacturaModel>>(emptyList())
     var _filtroEstadoPagada by mutableStateOf(false)
     var _filtroEstadoPedienteDePago by mutableStateOf(false)
@@ -23,9 +26,8 @@ class FiltrarFacturasViewModel : ViewModel() {
     var _filtroEstadoPlanDePago by mutableStateOf(false)
     var _filtroImporte by mutableStateOf(0F)
     var _filtroImporteMaxValue by mutableStateOf(0)
-    var _filtroFechaDefaultValue by mutableStateOf("")
-    var _filtroFechaDesde by mutableStateOf("")
-    var _filtroFechaHasta by mutableStateOf("")
+    var _filtroFechaDesde by mutableStateOf(R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context))
+    var _filtroFechaHasta by mutableStateOf(R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context))
 
     private object Injection: KoinComponent {
         val getFacturasLocalUseCase by inject<GetFacturasLocalUseCase>()
@@ -107,7 +109,7 @@ class FiltrarFacturasViewModel : ViewModel() {
         _filtroEstadoCuotaFija = false
         _filtroEstadoPlanDePago = false
         _filtroImporte = _filtroImporteMaxValue.toFloat()
-        _filtroFechaDesde = _filtroFechaDefaultValue
-        _filtroFechaHasta = _filtroFechaDefaultValue
+        _filtroFechaDesde = R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context)
+        _filtroFechaHasta = R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context)
     }
 }

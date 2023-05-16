@@ -217,9 +217,6 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
     val maxValue by rememberSaveable { mutableStateOf(navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1) }
     val minValue = 0
 
-    viewModel._filtroImporteMaxValue = maxValue
-    viewModel._filtroImporte = maxValue.toFloat()
-
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -288,9 +285,6 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
 @Composable
 private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
     val context = LocalContext.current
-    viewModel._filtroFechaDefaultValue = R.string.btFechaFiltrarFacturaText.getResourceStringAndroid(context)
-    viewModel._filtroFechaDesde = viewModel._filtroFechaDefaultValue
-    viewModel._filtroFechaHasta = viewModel._filtroFechaDefaultValue
 
     ConstraintLayout(
         modifier = Modifier.fillMaxWidth()
