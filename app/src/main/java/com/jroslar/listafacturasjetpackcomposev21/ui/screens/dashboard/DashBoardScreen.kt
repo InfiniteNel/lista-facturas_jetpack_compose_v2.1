@@ -46,7 +46,9 @@ fun DashBoardScreen() {
 //@Preview
 @Composable
 private fun Toolbar() {
-    TopAppBar(title = { Text(text = "") }, backgroundColor = Color.White, elevation = 0.dp)
+    TopAppBar(title = {
+                      //
+    }, backgroundColor = Color.White, elevation = 0.dp)
 }
 
 
@@ -107,24 +109,18 @@ private fun ItemPractica(practica: PracticaModel) {
                     bottom.linkTo(parent.bottom)
                 }
                 .clickable {
-                    when(practica.tipo){
-                        PracticasName.PRACTICA1 -> {
-                            ContextCompat.startActivity(
-                                context,
-                                Intent(context, ListaFacturasActivity::class.java),
-                                null
-                            )
-                        }
-                        PracticasName.PRACTICA2 -> {
-                            ContextCompat.startActivity(
-                                context,
-                                Intent(context, SmartSolarActivity::class.java),
-                                null
-                            )
-                        }
-                        else -> {
-                            //
-                        }
+                    if (practica.tipo == PracticasName.PRACTICA1) {
+                        ContextCompat.startActivity(
+                            context,
+                            Intent(context, ListaFacturasActivity::class.java),
+                            null
+                        )
+                    } else {
+                        ContextCompat.startActivity(
+                            context,
+                            Intent(context, SmartSolarActivity::class.java),
+                            null
+                        )
                     }
                 }
         )

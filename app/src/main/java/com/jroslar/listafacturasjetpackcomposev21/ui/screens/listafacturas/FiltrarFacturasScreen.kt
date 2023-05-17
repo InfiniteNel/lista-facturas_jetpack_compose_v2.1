@@ -49,7 +49,9 @@ fun FiltrarFacturasScreen(
 @Composable
 private fun Toolbar(onCloseClick: () -> Unit) {
     TopAppBar(
-        title = { Text(text = "") },
+        title = {
+                //
+        },
         backgroundColor = Color.White,
         elevation = 0.dp,
         actions = {
@@ -376,7 +378,7 @@ private fun showDatePicker(
     val month = c.get(Calendar.MONTH)
     val day = c.get(Calendar.DAY_OF_MONTH)
 
-    val dpdFecha = DatePickerDialog(context, { _, year, monthOfYear, dayOfMonth ->
+    val dpdFecha = DatePickerDialog(context, { _, _, monthOfYear, dayOfMonth ->
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val newdf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale("es"))
             onFechaGetValue("$dayOfMonth/${monthOfYear+1}/$year".castStringToDate().format(newdf))
