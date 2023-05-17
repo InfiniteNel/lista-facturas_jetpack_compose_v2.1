@@ -11,6 +11,18 @@ val subTitleItem = TextStyle(
     fontWeight = FontWeight.Normal,
 )
 
+val normalTextItem = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 18.sp,
+    fontWeight = FontWeight.Normal,
+)
+
+val commentTextItem = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Normal,
+)
+
 val titleFragment = TextStyle(
     fontFamily = FontFamily.Default,
     fontSize = 30.sp,

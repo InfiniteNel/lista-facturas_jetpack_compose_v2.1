@@ -22,9 +22,7 @@ import com.jroslar.listafacturasjetpackcomposev21.R
 import com.jroslar.listafacturasjetpackcomposev21.core.Constantes
 import com.jroslar.listafacturasjetpackcomposev21.core.Extensions.Companion.getResourceStringAndroid
 import com.jroslar.listafacturasjetpackcomposev21.data.model.FacturaModel
-import com.jroslar.listafacturasjetpackcomposev21.ui.theme.normalTextFragment
-import com.jroslar.listafacturasjetpackcomposev21.ui.theme.subTitleItem
-import com.jroslar.listafacturasjetpackcomposev21.ui.theme.titleFragment
+import com.jroslar.listafacturasjetpackcomposev21.ui.theme.*
 import com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas.ListaFacturasViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -40,7 +38,9 @@ fun ListaFacturasScreen(onFiltroClick: () -> Unit, viewModel: ListaFacturasViewM
 @Composable
 private fun Toolbar(onFiltroClick: () -> Unit) {
     TopAppBar(
-        title = { Text(text = "") },
+        title = {
+                //
+        },
         backgroundColor = Color.White,
         elevation = 0.dp,
         actions = {
@@ -145,6 +145,7 @@ private fun ItemFacturas(
         )
         Text(
             text = factura.descEstado,
+            style = commentTextItem,
             color = if (factura.descEstado == Constantes.Companion.DescEstado.PedienteDePago.descEstado) { Color.Red }
             else { Color.Black },
             modifier = Modifier
@@ -158,7 +159,7 @@ private fun ItemFacturas(
             text = factura.importeOrdenacion.toString().plus(
                 R.string.monedaValue.getResourceStringAndroid(
                     LocalContext.current)),
-            style = subTitleItem,
+            style = normalTextItem,
             modifier = Modifier
                 .constrainAs(importeFactura) {
                     end.linkTo(arrowFactura.start, margin = 10.dp)
