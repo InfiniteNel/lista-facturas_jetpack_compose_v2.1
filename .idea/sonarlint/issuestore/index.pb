@@ -8,8 +8,6 @@ S
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 ~
-Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Color.kt,4\a\4a5e8b85e520a9a0092b80e4b43b97320622af6c
-~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Shape.kt,6\f\6f6aaef01b6e9ab05982908affe8e501b750aec3
 Œ
 \app/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/network/FacturasService.kt,2\8\28839a05170ecb950845a20ce0b492bd6daf2f99

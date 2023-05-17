@@ -3,7 +3,6 @@ package com.jroslar.listafacturasjetpackcomposev21.ui.viewmodel.listafacturas
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,7 +35,7 @@ class ListaFacturasViewModel constructor(private val context: Context): ViewMode
             _data = emptyList()
             if (checkForInternet(context)) {
                 val data: List<FacturaModel> = getFacturasUseCase()
-                if (data.isNullOrEmpty()) {
+                if (data.isEmpty()) {
                     _state = ListaFacturasResult.NO_DATA
                     _maxValueImporte.postValue(0F)
                 } else {
@@ -51,26 +50,19 @@ class ListaFacturasViewModel constructor(private val context: Context): ViewMode
     private fun checkForInternet(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork ?: return false
-            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+        val network = connectivityManager.activeNetwork ?: return false
+        val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
 
-            return when {
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                else -> false
-            }
-        } else {
-            @Suppress("DEPRECATION") val networkInfo =
-                connectivityManager.activeNetworkInfo ?: return false
-            @Suppress("DEPRECATION")
-            return networkInfo.isConnected
+        return when {
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            else -> false
         }
     }
 
     fun getList(data: List<FacturaModel>) {
         _state = ListaFacturasResult.LOADING
-        if (data.isNullOrEmpty()) {
+        if (data.isEmpty()) {
             _data = emptyList()
             _state = ListaFacturasResult.NO_DATA
         } else {
