@@ -216,7 +216,11 @@ private fun CheckBoxStander(text: String, filtro: Boolean, onCheckBoxChange:(Boo
 @Composable
 private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController: NavHostController) {
     val context = LocalContext.current
-    val maxValue by rememberSaveable { mutableStateOf(navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1) }
+    val maxValue by rememberSaveable {
+        val maxValue = navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1
+        viewModel._filtroImporte = maxValue.toFloat()
+        mutableStateOf(maxValue)
+    }
     val minValue = 0
 
     ConstraintLayout(
