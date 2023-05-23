@@ -95,15 +95,19 @@ private fun Toolbar() {
 @Composable
 private fun Content() {
     val context = LocalContext.current
-
-    val pagerState = rememberPagerState(pageCount = 3)
-    Column() {
+    val list = listOf(
+        R.string.tab_text_1.getResourceStringAndroid(context),
+        R.string.tab_text_2.getResourceStringAndroid(context),
+        R.string.tab_text_3.getResourceStringAndroid(context),
+    )
+    val pagerState = rememberPagerState(pageCount = list.size)
+    Column {
         Text(
             text = R.string.tvTitleSmartSolarText.getResourceStringAndroid(context),
             style = titleFragment,
             modifier = Modifier.padding(start = 20.dp, bottom = 20.dp)
         )
-        Tabs(pagerState = pagerState)
+        Tabs(pagerState = pagerState, list)
         TabsContent(pagerState = pagerState)
     }
 }
@@ -133,13 +137,7 @@ private fun Modifier.customTabIndicatorOffset(
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Tabs(pagerState: PagerState) {
-    val context = LocalContext.current
-    val list = listOf(
-        R.string.tab_text_1.getResourceStringAndroid(context),
-        R.string.tab_text_2.getResourceStringAndroid(context),
-        R.string.tab_text_3.getResourceStringAndroid(context),
-    )
+fun Tabs(pagerState: PagerState, list: List<String>) {
     val density = LocalDensity.current
     val tabWidths = remember {
         val tabWidthStateList = mutableStateListOf<Dp>()
@@ -167,15 +165,15 @@ fun Tabs(pagerState: PagerState) {
         divider = {
         }
     ) {
-        list.forEachIndexed { index, _ ->
+        list.forEachIndexed { index, tab ->
             Tab(
                 text = {
                     Text(
-                        list[index],
+                        text = tab,
                         style = normalTextFragment,
                         fontWeight = if (pagerState.currentPage == index) FontWeight.Bold else FontWeight.Normal,
                         onTextLayout = { textLayoutResult ->
-                            tabWidths[pagerState.currentPage] =
+                            tabWidths[index] =
                                 with(density) { textLayoutResult.size.width.toDp() }
                         }
                     )
