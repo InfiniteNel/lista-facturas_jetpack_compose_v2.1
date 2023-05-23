@@ -346,7 +346,7 @@ private fun FiltrarPorFecha(viewModel: FiltrarFacturasViewModel) {
         Button(
             onClick = {
                 showDatePicker({
-                               viewModel._filtroFechaHasta = it
+                    viewModel._filtroFechaHasta = it
                 }, context)
             },
             modifier = Modifier.constrainAs(btFechaHasta) {
@@ -383,10 +383,10 @@ private fun showDatePicker(
     val month = c.get(Calendar.MONTH)
     val day = c.get(Calendar.DAY_OF_MONTH)
 
-    val dpdFecha = DatePickerDialog(context, { _, _, monthOfYear, dayOfMonth ->
+    val dpdFecha = DatePickerDialog(context, R.style.ThemeOverlay_MyApp_Dialog, { _, yearDatePicker, monthOfYear, dayOfMonth ->
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val newdf: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale("es"))
-            onFechaGetValue("$dayOfMonth/${monthOfYear+1}/$year".castStringToDate().format(newdf))
+            onFechaGetValue("$dayOfMonth/${monthOfYear+1}/$yearDatePicker".castStringToDate().format(newdf))
         }
     }, year, month, day)
     dpdFecha.datePicker.maxDate = Date().time
