@@ -218,6 +218,7 @@ private fun FiltrarPorImporte(viewModel: FiltrarFacturasViewModel, navController
     val context = LocalContext.current
     val maxValue by rememberSaveable {
         val maxValue = navController.previousBackStackEntry?.savedStateHandle?.get<Int>(NavArgs.ItemMaxValueListaFacturas.key)!! + 1
+        viewModel._filtroImporteMaxValue = maxValue
         viewModel._filtroImporte = maxValue.toFloat()
         mutableStateOf(maxValue)
     }
