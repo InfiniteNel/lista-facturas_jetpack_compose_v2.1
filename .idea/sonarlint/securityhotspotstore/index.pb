@@ -39,8 +39,6 @@ kapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/view/listafactu
 mapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/smartsolar/SmartSolarEnergiaScreen.kt,f\b\fbcfa9cc93a44c7bc80988ca888880c31b1ec9a7
 £
 sapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/smartsolar/SmartSolarMiInstalacionScreen.kt,f\f\ffea383a49a8b29046eb4993f805940a6650f39a
-¡
-qapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/smartsolar/SmartSolarAutoconsumoScreen.kt,b\8\b897dbb70eb8bcc6eb74cbed933496f2fdbdec12
 ž
 napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/smartsolar/SmartSolarDetallesScreen.kt,d\e\decc816571a5fa2f0ebe5306136f05b628fdaf98
 
@@ -49,8 +47,6 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 Ÿ
 oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/smartsolar/SmartSolarTabLayoutScreen.kt,a\5\a50efc49258f4f71420a6109321e99d1facbf3fb
-
-Oapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/core/Constantes.kt,6\5\656143f8d8fd8d9d23d9c1d7ec607e7a9cbc16c4
 ~
 Napp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/theme/Color.kt,4\a\4a5e8b85e520a9a0092b80e4b43b97320622af6c
 ‚
@@ -83,5 +79,3 @@ Wapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/DetallesRepos
 mapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/listafacturas/DetailFacturasScreen.kt,a\4\a4b34e95ec3fb44ddfd29c87997c4d30e13b3844
 ‡
 Wapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/data/FacturasRepository.kt,d\9\d976f3a707908034310e624edbcdbc189b5d415c
-œ
-lapp/src/main/java/com/jroslar/listafacturasjetpackcomposev21/ui/screens/listafacturas/ListaFacturasScreen.kt,6\d\6dfbea647166a3705a32ef6667ffb5bd805df62b
