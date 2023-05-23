@@ -93,14 +93,17 @@ private fun Toolbar() {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-private fun Content() {
+private fun Content(inicial: String = R.string.tab_text_1.getResourceStringAndroid(LocalContext.current)) {
     val context = LocalContext.current
     val list = listOf(
         R.string.tab_text_1.getResourceStringAndroid(context),
         R.string.tab_text_2.getResourceStringAndroid(context),
         R.string.tab_text_3.getResourceStringAndroid(context),
     )
-    val pagerState = rememberPagerState(pageCount = list.size)
+    val pagerState = rememberPagerState(
+        pageCount = list.size,
+        list.indexOf(inicial) //Pasamos el String por el que empieza el TabLayout
+    )
     Column {
         Text(
             text = R.string.tvTitleSmartSolarText.getResourceStringAndroid(context),
